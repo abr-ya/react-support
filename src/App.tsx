@@ -1,12 +1,24 @@
-import GlobalStyle, { Container } from "./components/Common.styled";
+import { Header } from "components";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import GlobalStyle from "./components/Common.styled";
+import { Home, About, Error404, Login, Register } from "./pages";
 
 const App = () => (
   <>
     <GlobalStyle />
-    <Container>
-      <h1>Hello, Styled React!</h1>
-      <h2>ENV test: {process.env.TEST}</h2>
-    </Container>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="about" element={<About />} />
+        <Route path="*" element={<Error404 />} />
+      </Routes>
+    </Router>
+    <ToastContainer />
   </>
 );
 
