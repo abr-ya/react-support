@@ -1,5 +1,6 @@
+import { BtnBlock } from "components/Common.styled";
 import { useState, FormEvent } from "react";
-import { ButtonBlock, ButtonText, InputBlock, StyledButton, StyledInput, StyledLabel } from "./UserForm.styled";
+import { ButtonBlock, InputBlock, StyledInput, StyledLabel } from "./UserForm.styled";
 
 interface IUserFormData {
   name?: string;
@@ -40,8 +41,7 @@ const UserForm = ({ formHandler, buttonTitle, showName }: IUserForm): JSX.Elemen
         <StyledInput onChange={(e) => setPass(e.target.value)} type="password" icon="lockIcon" />
       </InputBlock>
       <ButtonBlock>
-        <ButtonText>{buttonTitle}</ButtonText>
-        <StyledButton />
+        <BtnBlock>{buttonTitle}</BtnBlock>
       </ButtonBlock>
     </form>
   );
