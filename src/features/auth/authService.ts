@@ -11,12 +11,18 @@ const register = async (userData) => {
   return { data, status };
 };
 
-// Logout user
-const logout = () => localStorage.removeItem("user");
+// Login user
+const login = async (userData) => {
+  // обработка ошибок сейчас в slice
+  const { data, status } = await axios.post(`${baseUrl}/api/users/login`, userData);
+  if (data) localStorage.setItem("user", JSON.stringify(data));
+
+  return { data, status };
+};
 
 const authService = {
   register,
-  logout,
+  login,
 };
 
 export default authService;

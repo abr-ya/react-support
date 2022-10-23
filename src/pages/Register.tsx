@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { register, clearUser } from "../features/auth/authSlice";
+import { register, logout } from "../features/auth/authSlice";
 import { Loader, UserForm } from "components";
 import { BtnBlock, Container, PageHeader, SectionComment } from "components/Common.styled";
 import { INewUser } from "interfaces";
@@ -13,12 +13,11 @@ const Register = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(isError);
     if (isError) toast.error(error);
 
     // Redirect when logged in
     if (isSuccess) navigate("/");
-  }, [isError, isSuccess, user, error, navigate, dispatch]);
+  }, [isError, isSuccess]);
 
   const formHandler = (userData: INewUser) => {
     console.log("Register", userData);
@@ -26,8 +25,7 @@ const Register = () => {
   };
 
   const Logout = () => {
-    localStorage.removeItem("user");
-    dispatch(clearUser());
+    dispatch(logout());
   };
 
   const renderMain = () => {

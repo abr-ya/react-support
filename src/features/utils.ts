@@ -21,4 +21,5 @@ export const typedCatchHandler = (
 
 export const isError = (action: AnyAction) => action.type.endsWith("rejected");
 
+export const not200mes = "Axios получил результат, но статус не 200.";
 export const not201mes = "Axios получил результат, но статус не 201.";

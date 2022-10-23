@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { isError, not201mes, typedCatchHandler } from "features/utils";
-import { INewUser, IUser } from "interfaces";
+import { isError, not200mes, not201mes, typedCatchHandler } from "features/utils";
+import { ILoginUser, INewUser, IUser } from "interfaces";
 import authService from "./authService";
 
 interface IUserState {
@@ -38,15 +38,28 @@ export const register = createAsyncThunk<IUser, INewUser, { rejectValue: string 
 );
 
 // Login user
-export const login = createAsyncThunk("auth/login", async (user, { rejectWithValue }) => {
-  console.log(user);
-});
+export const login = createAsyncThunk<IUser, ILoginUser, { rejectValue: string }>(
+  "auth/login",
+  async (user, { rejectWithValue }) => {
+    try {
+      const { data, status } = await authService.login(user);
+
+      return status === 200 ? data : rejectWithValue(not200mes);
+    } catch (error) {
+      // rejectWithValue с проверкой типа ошибки и шаблоном сообщения
+      return typedCatchHandler(error, rejectWithValue, "auth/login");
+    }
+  },
+);
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    clearUser: () => ({ ...initialState, user: null }),
+    logout: () => {
+      localStorage.removeItem("user");
+      return { ...initialState, user: null };
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -59,9 +72,15 @@ export const authSlice = createSlice({
         state.isSuccess = true;
         state.user = action.payload;
       })
-      // .addCase(logout.fulfilled, (state) => {
-      //   state.user = null;
-      // })
+      .addCase(login.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+      })
       .addMatcher(isError, (state, action: PayloadAction<string>) => {
         state.isLoading = false;
         state.isError = true;
@@ -70,5 +89,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { clearUser } = authSlice.actions;
+export const { logout } = authSlice.actions;
 export default authSlice.reducer;

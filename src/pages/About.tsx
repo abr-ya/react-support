@@ -1,9 +1,9 @@
-import { Container, Card, AboutList } from "../components/Common.styled";
+import { Container, Card, AboutList, PageHeader } from "../components/Common.styled";
 
 const About = () => (
   <Container>
+    <PageHeader>About page</PageHeader>
     <Card>
-      <h1>About page</h1>
       <p>Приложение - ...</p>
 
       <AboutList>
@@ -13,10 +13,10 @@ const About = () => (
         <li>TypeScript</li>
         <li>стилизация: Styled Components</li>
         <li>маршрутизация: React Router 6</li>
-        <li>авторизация: ???</li>
+        <li>авторизация: Express + Mongo DB</li>
         <li>запросы на сервер: Axios</li>
         <li>хранилище: Redux (with Toolkit)</li>
-        <li>иконки: ???</li>
+        <li>иконки: React Icons</li>
         <li>уведомления: React Toastify</li>
       </AboutList>
     </Card>

@@ -1,8 +1,8 @@
-import { Container } from "../components/Common.styled";
+import { Container, PageHeader } from "../components/Common.styled";
 
 const Error404 = () => (
   <Container>
-    <h1>Error 404</h1>
+    <PageHeader>Error 404</PageHeader>
     <p>Страница не найдена - введенный адрес не используется в приложении.</p>
   </Container>
 );
