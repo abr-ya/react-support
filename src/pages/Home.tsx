@@ -1,19 +1,18 @@
-import { Link } from "react-router-dom";
 import { FaQuestionCircle, FaTicketAlt } from "react-icons/fa";
-import { BtnLink, Container, PageHeader, SectionComment } from "../components/Common.styled";
+import { BtnLinkBlack, BtnLinkWhite, Container, PageHeader, SectionComment } from "../components/Common.styled";
 
 const Home = () => (
   <Container>
     <PageHeader>What do you need?</PageHeader>
     <SectionComment>Please choose from an option below</SectionComment>
 
-    <BtnLink to="/new-ticket" isReverse>
+    <BtnLinkBlack to="/new-ticket">
       <FaQuestionCircle /> Create New Ticket
-    </BtnLink>
+    </BtnLinkBlack>
 
-    <BtnLink to="/tickets">
+    <BtnLinkWhite to="/tickets">
       <FaTicketAlt /> View My Tickets
-    </BtnLink>
+    </BtnLinkWhite>
   </Container>
 );
 

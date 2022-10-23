@@ -10,6 +10,7 @@ export const StyledInput = styled.input<{ icon?: string }>`
   box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
   width: 100%;
   padding: 10px;
+  padding-left: 50px;
   border: 1px solid #e6e6e6;
   border-radius: 5px;
   outline: none;

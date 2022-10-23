@@ -5,7 +5,7 @@ import { Logo, Nav, NavItem, NavLink, StyledHeader } from "./Header.styled";
 const Header = () => (
   <StyledHeader>
     <Logo>
-      <Link to="/">Support Desk</Link>
+      <Link to="/">Home</Link>
     </Logo>
     <Nav>
       <NavItem>

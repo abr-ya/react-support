@@ -81,12 +81,10 @@ export const BtnBlock = styled(Btn)`
   margin-bottom: 20px;
 `;
 
-export const BtnLink = styled(Link)<{ isReverse?: boolean }>`
+export const BtnLink = styled(Link)`
   padding: 10px 20px;
   border: 1px solid #000;
   border-radius: 5px;
-  background: ${({ isReverse }) => (isReverse ? "#fff" : "#000")};
-  color: ${({ isReverse }) => (!isReverse ? "#fff" : "#000")};
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
@@ -101,6 +99,16 @@ export const BtnLink = styled(Link)<{ isReverse?: boolean }>`
   & > svg {
     margin-right: 8px;
   }
+`;
+
+export const BtnLinkWhite = styled(BtnLink)`
+  background: #fff;
+  color: #000;
+`;
+
+export const BtnLinkBlack = styled(BtnLink)`
+  background: #000;
+  color: #fff;
 `;
 
 export const Old = styled.p`

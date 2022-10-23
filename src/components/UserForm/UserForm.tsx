@@ -5,7 +5,7 @@ import { ButtonBlock, InputBlock, StyledInput, StyledLabel } from "./UserForm.st
 interface IUserFormData {
   name?: string;
   email: string;
-  pass: string;
+  password: string;
 }
 
 interface IUserForm {
@@ -17,11 +17,11 @@ interface IUserForm {
 const UserForm = ({ formHandler, buttonTitle, showName }: IUserForm): JSX.Element => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const [password, setPass] = useState("");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    formHandler({ name, email, pass });
+    formHandler({ name, email, password });
   };
 
   return (

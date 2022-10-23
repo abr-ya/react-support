@@ -2,8 +2,8 @@ import { Container, PageHeader, SectionComment } from "components/Common.styled"
 import { UserForm } from "components";
 
 const Login = () => {
-  const formHandler = async ({ email, pass }) => {
-    console.log("Login", email, pass);
+  const formHandler = async ({ email, password }) => {
+    console.log("Login", email, password);
   };
 
   return (
