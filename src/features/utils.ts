@@ -1,5 +1,4 @@
 import { AnyAction } from "@reduxjs/toolkit";
-import { AxiosError } from "axios";
 
 export const typedCatchHandler = (
   error: any | unknown,
@@ -23,3 +22,7 @@ export const isError = (action: AnyAction) => action.type.endsWith("rejected");
 
 export const not200mes = "Axios получил результат, но статус не 200.";
 export const not201mes = "Axios получил результат, но статус не 201.";
+
+export const createConfig = (token) => ({ headers: { Authorization: `Bearer ${token}` } });
+export const getMessage = (e) =>
+  (e.response && e.response.data && e.response.data.message) || e.message || e.toString();

@@ -18,12 +18,12 @@ const TicketForm = ({ formHandler }: ITicketForm) => {
   const { user } = useAppSelector((state) => state.auth);
   const [name] = useState(user.name);
   const [email] = useState(user.email);
-  const [product, setProduct] = useState("");
+  const [product, setProduct] = useState("iPhone"); // default iPhone or empty? todo !
   const [description, setDescription] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
-    formHandler({ name, email, product, description });
+    formHandler({ name, email, product, description }); // email ?? todo !
   };
 
   return (

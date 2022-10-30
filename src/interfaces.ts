@@ -15,3 +15,19 @@ export interface IUser {
   email: string;
   token: string;
 }
+
+export interface INewTicket {
+  user: string;
+  product: string;
+  description: string;
+}
+
+export interface ITicket {
+  _id: string;
+  user: string;
+  product: string;
+  description: string;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+}
