@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { createTicket, reset } from "features/ticket/ticketSlice";
-import { Loader, TicketForm } from "components";
-import { Container, PageHeader, SectionComment } from "components/Common.styled";
+import { ContainerWithBack, Loader, TicketForm } from "components";
+import { SectionComment } from "components/Common.styled";
 import { useAppDispatch, useAppSelector } from "features/typedRedux";
 
 const NewTicket = () => {
@@ -36,12 +36,7 @@ const NewTicket = () => {
     );
   };
 
-  return (
-    <Container>
-      <PageHeader>Create New Ticket</PageHeader>
-      {renderMain()}
-    </Container>
-  );
+  return <ContainerWithBack title="Create New Ticket">{renderMain()}</ContainerWithBack>;
 };
 
 export default NewTicket;
