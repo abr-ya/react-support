@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components/macro";
+import styled, { createGlobalStyle, css } from "styled-components/macro";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -101,9 +101,17 @@ export const BtnLink = styled(Link)`
   }
 `;
 
-export const BtnLinkWhite = styled(BtnLink)`
+export const BtnLinkWhite = styled(BtnLink)<{ isSmall?: boolean }>`
   background: #fff;
   color: #000;
+
+  ${({ isSmall }) =>
+    isSmall &&
+    css`
+      padding: 5px 15px;
+      font-size: 13px;
+      margin: 0;
+    `}
 `;
 
 export const BtnLinkBlack = styled(BtnLink)`

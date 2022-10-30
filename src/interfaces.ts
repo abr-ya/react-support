@@ -22,12 +22,14 @@ export interface INewTicket {
   description: string;
 }
 
+export type IStatus = "new" | "open" | "closed";
+
 export interface ITicket {
   _id: string;
   user: string;
   product: string;
   description: string;
-  status: string;
+  status: IStatus;
   createdAt: string;
   updatedAt: string;
 }

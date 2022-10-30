@@ -1,4 +1,4 @@
-import { ContainerWithBack, Loader } from "components";
+import { ContainerWithBack, Loader, TicketsList } from "components";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "features/typedRedux";
 import { getTickets, reset } from "features/ticket/ticketSlice";
@@ -21,10 +21,10 @@ const Tickets = () => {
   const renderMain = () => {
     if (isLoading) return <Loader />;
 
-    return <span>Здесь будет список тикетов... Сейчас их {tickets.length}.</span>;
+    return <TicketsList data={tickets} />;
   };
 
-  return <ContainerWithBack title="Create New Ticket">{renderMain()}</ContainerWithBack>;
+  return <ContainerWithBack title="Tickets List">{renderMain()}</ContainerWithBack>;
 };
 
 export default Tickets;
