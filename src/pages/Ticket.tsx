@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getTicket } from "features/ticket/ticketSlice";
-import { ContainerWithBack, Loader } from "components";
+import { ContainerWithBack, Loader, TicketCard } from "components";
 import { SectionComment } from "components/Common.styled";
 import { useAppDispatch, useAppSelector } from "features/typedRedux";
 
 const Ticket = () => {
-  const { isLoading, isError, message } = useAppSelector((state) => state.ticket);
+  const { isLoading, isError, message, ticket } = useAppSelector((state) => state.ticket);
 
   const dispatch = useAppDispatch();
   const { id } = useParams();
@@ -21,11 +21,7 @@ const Ticket = () => {
   const renderMain = () => {
     if (isLoading) return <Loader />;
 
-    return (
-      <>
-        <SectionComment>Details of ticket {id}</SectionComment>
-      </>
-    );
+    return <TicketCard ticket={ticket} />;
   };
 
   return <ContainerWithBack title="Ticket Details">{renderMain()}</ContainerWithBack>;
