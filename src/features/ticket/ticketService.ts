@@ -17,3 +17,10 @@ export const getTicketsReq = async (token) => {
 
   return response.data;
 };
+
+// Get user ticket
+export const getTicketReq = async (id, token) => {
+  const response = await axios.get(`${TICKET_URL}${id}`, createConfig(token));
+
+  return response.data;
+};

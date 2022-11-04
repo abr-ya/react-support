@@ -74,11 +74,20 @@ export const Btn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  & > svg {
+    margin-right: 8px;
+  }
 `;
 
 export const BtnBlock = styled(Btn)`
   width: 100%;
   margin-bottom: 20px;
+`;
+
+export const BtnBlockWhite = styled(BtnBlock)`
+  background: #fff;
+  color: #000;
 `;
 
 export const BtnLink = styled(Link)`
@@ -101,12 +110,12 @@ export const BtnLink = styled(Link)`
   }
 `;
 
-export const BtnLinkWhite = styled(BtnLink)<{ isSmall?: boolean }>`
+export const BtnLinkWhite = styled(BtnLink)<{ size?: "small" }>`
   background: #fff;
   color: #000;
 
-  ${({ isSmall }) =>
-    isSmall &&
+  ${({ size }) =>
+    size === "small" &&
     css`
       padding: 5px 15px;
       font-size: 13px;

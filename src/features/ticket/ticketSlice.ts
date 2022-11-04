@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootStateType } from "app/store";
 import { getMessage } from "features/utils";
 import { INewTicket, ITicket } from "interfaces";
-import { createTicketReq, getTicketsReq } from "./ticketService";
+import { createTicketReq, getTicketReq, getTicketsReq } from "./ticketService";
 
 interface ITicketState {
   tickets: ITicket[];
@@ -44,6 +44,16 @@ export const getTickets = createAsyncThunk("tickets/getAll", async (_, { getStat
   }
 });
 
+// Get user tickets
+export const getTicket = createAsyncThunk("tickets/getById", async (id: string, { getState, rejectWithValue }) => {
+  try {
+    const state = getState() as RootStateType;
+    return await getTicketReq(id, state.auth.user.token);
+  } catch (error) {
+    return rejectWithValue(getMessage(error));
+  }
+});
+
 export const ticketSlice = createSlice({
   name: "ticket",
   initialState,
@@ -73,6 +83,19 @@ export const ticketSlice = createSlice({
         state.tickets = action.payload;
       })
       .addCase(getTickets.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload as string;
+      })
+      .addCase(getTicket.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getTicket.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.ticket = action.payload;
+      })
+      .addCase(getTicket.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload as string;

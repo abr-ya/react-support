@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GlobalStyle, { Wrapper } from "./components/Common.styled";
-import { Home, About, Error404, Login, Register, NewTicket, Tickets } from "./pages";
+import { Home, About, Error404, Login, Register, NewTicket, Tickets, Ticket } from "./pages";
 
 const App = () => (
   <>
@@ -21,6 +21,9 @@ const App = () => (
           </Route>
           <Route path="/tickets" element={<PrivateRoute />}>
             <Route path="/tickets" element={<Tickets />} />
+          </Route>
+          <Route path="/ticket/:id" element={<PrivateRoute />}>
+            <Route path="/ticket/:id" element={<Ticket />} />
           </Route>
           <Route path="*" element={<Error404 />} />
         </Routes>

@@ -1,6 +1,5 @@
 import { BtnLinkWhite } from "components/Common.styled";
 import { ITicket } from "interfaces";
-import { Link } from "react-router-dom";
 import { Item, Status } from "./Ticket.styled";
 
 interface ITicketItem {
@@ -12,7 +11,7 @@ const TicketItem = ({ ticket }: ITicketItem) => (
     <div>{new Date(ticket.createdAt).toLocaleString("ru")}</div>
     <div>{ticket.product}</div>
     <Status status={ticket.status}>{ticket.status}</Status>
-    <BtnLinkWhite to={`/ticket/${ticket._id}`} isSmall>
+    <BtnLinkWhite to={`/ticket/${ticket._id}`} size="small">
       View
     </BtnLinkWhite>
   </Item>

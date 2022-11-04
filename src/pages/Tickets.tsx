@@ -5,8 +5,6 @@ import { getTickets, reset } from "features/ticket/ticketSlice";
 
 const Tickets = () => {
   const { tickets, isLoading } = useAppSelector((state) => state.ticket);
-  console.log(tickets);
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
