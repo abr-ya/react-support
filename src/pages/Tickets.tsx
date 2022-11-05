@@ -10,10 +10,10 @@ const Tickets = () => {
   useEffect(() => {
     dispatch(getTickets());
 
-    // clear data when go out
-    return () => {
-      dispatch(reset());
-    };
+    // clear data when go out ?? need it?
+    // return () => {
+    //   dispatch(reset());
+    // };
   }, []);
 
   const renderMain = () => {

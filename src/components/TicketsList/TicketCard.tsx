@@ -12,6 +12,7 @@ const TicketCard = ({ ticket }: ITicketCard) => (
       <Status status={ticket.status}>{ticket.status}</Status>
     </TitleStatus>
     <SubTitle>Date Submitted: {new Date(ticket.createdAt).toLocaleString("ru")}</SubTitle>
+    <SubTitle>Product: {ticket.product}</SubTitle>
     <hr />
     <Description>
       <SubTitle>Description of Issue</SubTitle>
