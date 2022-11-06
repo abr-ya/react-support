@@ -6,5 +6,6 @@ import Header from "./Header/Header";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import ContainerWithBack from "./ContainerWithBack/ContainerWithBack";
 import TicketCard from "./TicketsList/TicketCard";
+import NotesList from "./NotesList/NotesList";
 
-export { UserForm, Loader, Header, PrivateRoute, TicketForm, TicketsList, ContainerWithBack, TicketCard };
+export { UserForm, Loader, Header, PrivateRoute, TicketForm, TicketsList, ContainerWithBack, TicketCard, NotesList };

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { createTicket, reset } from "features/ticket/ticketSlice";
@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "features/typedRedux";
 
 const NewTicket = () => {
   const { isLoading, isError, isSuccess, message } = useAppSelector((state) => state.ticket);
+  const [hasSended, setHasSended] = useState(false);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -17,16 +18,18 @@ const NewTicket = () => {
       dispatch(reset());
       if (isError) toast.error(message);
       if (isSuccess) navigate("/tickets");
+      setHasSended(false);
     }
   }, [isLoading]);
 
   const formHandler = (data) => {
     console.log("Form submit: ", data);
+    setHasSended(true);
     dispatch(createTicket(data));
   };
 
   const renderMain = () => {
-    if (isLoading) return <Loader />;
+    if (hasSended && isLoading) return <Loader />;
 
     return (
       <>

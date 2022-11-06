@@ -13,8 +13,6 @@ const Home = () => (
     <BtnLinkWhite to="/tickets">
       <FaTicketAlt /> View My Tickets
     </BtnLinkWhite>
-
-    <SectionComment>ENV_test: {process.env.TEST}</SectionComment>
   </Container>
 );
 

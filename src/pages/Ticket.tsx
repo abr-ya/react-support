@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom"; // useNavigate
 import { toast } from "react-toastify";
 import { setTicketStatus, getTicket } from "features/ticket/ticketSlice";
-import { getNotes, resetNotes } from "features/note/noteSlice";
-import { ContainerWithBack, Loader, TicketCard } from "components";
-import { Btn } from "components/Common.styled";
+import { getNotes } from "features/note/noteSlice"; // resetNotes
+import { ContainerWithBack, Loader, NotesList, TicketCard } from "components";
+import { Btn, SectionComment } from "components/Common.styled";
 import { useAppDispatch, useAppSelector } from "features/typedRedux";
 
 const Ticket = () => {
@@ -37,19 +37,22 @@ const Ticket = () => {
   };
 
   const renderMain = () => {
+    console.log("renderMain", isLoading);
     if (isLoading) return <Loader />;
 
-    return (
-      <>
-        <TicketCard ticket={ticket} />
-        {notesIsLoading ? <Loader /> : <span>loaded notes: {notes.length}</span>}
-        {ticket.status !== "closed" ? (
-          <Btn onClick={onTicketClose}>Close Ticket [to do: danger!]</Btn>
-        ) : (
-          <Btn onClick={onTicketOpen}>reOpen Ticket</Btn>
-        )}
-      </>
-    );
+    if (ticket)
+      return (
+        <>
+          <TicketCard ticket={ticket} />
+          <SectionComment>Notes</SectionComment>
+          {notesIsLoading ? <Loader /> : <NotesList data={notes} />}
+          {ticket.status !== "closed" ? (
+            <Btn onClick={onTicketClose}>Close Ticket [to do: danger!]</Btn>
+          ) : (
+            <Btn onClick={onTicketOpen}>reOpen Ticket</Btn>
+          )}
+        </>
+      );
   };
 
   return <ContainerWithBack title="Ticket Details">{renderMain()}</ContainerWithBack>;

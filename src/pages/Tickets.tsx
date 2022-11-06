@@ -11,9 +11,9 @@ const Tickets = () => {
     dispatch(getTickets());
 
     // clear data when go out ?? need it?
-    // return () => {
-    //   dispatch(reset());
-    // };
+    return () => {
+      dispatch(reset());
+    };
   }, []);
 
   const renderMain = () => {
