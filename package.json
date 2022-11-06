@@ -1,7 +1,7 @@
 {
-  "name": "hello-react-ts-2022-09",
+  "name": "react-support",
   "version": "0.1.0",
-  "description": "Starter for React",
+  "description": "React Front for Support Desk",
   "author": "",
   "license": "MIT",
   "scripts": {

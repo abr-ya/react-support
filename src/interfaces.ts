@@ -33,3 +33,13 @@ export interface ITicket {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface INote {
+  _id: string;
+  user: string;
+  ticket: string;
+  text: string;
+  isStaff: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
