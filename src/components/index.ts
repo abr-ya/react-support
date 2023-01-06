@@ -7,5 +7,17 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import ContainerWithBack from "./ContainerWithBack/ContainerWithBack";
 import TicketCard from "./TicketsList/TicketCard";
 import NotesList from "./NotesList/NotesList";
+import NoteModalForm from "./forms/NoteModalForm";
 
-export { UserForm, Loader, Header, PrivateRoute, TicketForm, TicketsList, ContainerWithBack, TicketCard, NotesList };
+export {
+  UserForm,
+  Loader,
+  Header,
+  PrivateRoute,
+  TicketForm,
+  TicketsList,
+  ContainerWithBack,
+  TicketCard,
+  NotesList,
+  NoteModalForm,
+};

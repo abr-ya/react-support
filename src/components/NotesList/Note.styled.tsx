@@ -29,4 +29,5 @@ export const DateText = styled.div<{ staff?: boolean }>`
 
 export const Wrapper = styled.div`
   margin-bottom: 20px;
+  margin-top: 10px;
 `;

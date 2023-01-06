@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // useNavigate
 import { toast } from "react-toastify";
 import { setTicketStatus, getTicket } from "features/ticket/ticketSlice";
 import { getNotes } from "features/note/noteSlice"; // resetNotes
-import { ContainerWithBack, Loader, NotesList, TicketCard } from "components";
+import { ContainerWithBack, Loader, NoteModalForm, NotesList, TicketCard } from "components";
 import { Btn, SectionComment } from "components/Common.styled";
+import { FaPlus } from "react-icons/fa";
 import { useAppDispatch, useAppSelector } from "features/typedRedux";
 
 const Ticket = () => {
@@ -45,6 +46,7 @@ const Ticket = () => {
         <>
           <TicketCard ticket={ticket} />
           <SectionComment>Notes</SectionComment>
+          {ticket.status !== "closed" && <NoteModalForm />}
           {notesIsLoading ? <Loader /> : <NotesList data={notes} />}
           {ticket.status !== "closed" ? (
             <Btn onClick={onTicketClose}>Close Ticket [to do: danger!]</Btn>
