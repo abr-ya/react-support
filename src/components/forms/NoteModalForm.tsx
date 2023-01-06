@@ -1,10 +1,14 @@
 import { useState } from "react";
 import Modal from "react-modal";
-import { FormGroup, Textarea } from "components/forms/Form.styled";
-import { Btn } from "components/Common.styled";
+import { Close, FormGroup, Textarea } from "components/forms/Form.styled";
+import { Btn, SectionHeader } from "components/Common.styled";
 import { FaPlus } from "react-icons/fa";
 
-const NoteModalForm = () => {
+interface INoteModalForm {
+  handler: (text: string) => void;
+}
+
+const NoteModalForm = ({ handler }: INoteModalForm) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [noteText, setNoteText] = useState("");
 
@@ -15,9 +19,14 @@ const NoteModalForm = () => {
   // Submit
   const onNoteSubmit = (e) => {
     e.preventDefault();
-    console.log(noteText.trim());
-    setNoteText("");
-    closeModal();
+    const text = noteText.trim();
+    // проверка лишняя из-за дизейбла кнопки, но лучше пусть будет)
+    if (text) {
+      console.log("создать заметку", text);
+      handler(text);
+      setNoteText("");
+      closeModal();
+    }
   };
 
   // Modal Start
@@ -39,8 +48,8 @@ const NoteModalForm = () => {
   return (
     <>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Add Note">
-        <button onClick={closeModal}>X</button>
-        <h2>Add Note</h2>
+        <Close onClick={closeModal}>X</Close>
+        <SectionHeader>Add Note</SectionHeader>
         <form onSubmit={onNoteSubmit}>
           <FormGroup>
             <Textarea

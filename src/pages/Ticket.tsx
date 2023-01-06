@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom"; // useNavigate
 import { toast } from "react-toastify";
 import { setTicketStatus, getTicket } from "features/ticket/ticketSlice";
-import { getNotes } from "features/note/noteSlice"; // resetNotes
+import { createNote, getNotes } from "features/note/noteSlice"; // resetNotes
 import { ContainerWithBack, Loader, NoteModalForm, NotesList, TicketCard } from "components";
 import { Btn, SectionComment } from "components/Common.styled";
-import { FaPlus } from "react-icons/fa";
 import { useAppDispatch, useAppSelector } from "features/typedRedux";
 
 const Ticket = () => {
@@ -33,8 +32,15 @@ const Ticket = () => {
   // reOpen ticket
   const onTicketOpen = () => {
     dispatch(setTicketStatus({ id, status: "open" }));
-    toast.success("Ticket reOpen");
+    toast.success("Ticket reOpened");
     // navigate("/tickets");
+  };
+
+  // create Note
+  const createNoteHandler = (text: string) => {
+    console.log(`Create note: ${text} for Ticket ${id}`);
+    dispatch(createNote({ ticketId: id, text }));
+    toast.success(`Create note: ${text} for Ticket ${id}`);
   };
 
   const renderMain = () => {
@@ -46,7 +52,7 @@ const Ticket = () => {
         <>
           <TicketCard ticket={ticket} />
           <SectionComment>Notes</SectionComment>
-          {ticket.status !== "closed" && <NoteModalForm />}
+          {ticket.status !== "closed" && <NoteModalForm handler={createNoteHandler} />}
           {notesIsLoading ? <Loader /> : <NotesList data={notes} />}
           {ticket.status !== "closed" ? (
             <Btn onClick={onTicketClose}>Close Ticket [to do: danger!]</Btn>

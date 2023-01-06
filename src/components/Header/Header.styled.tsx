@@ -25,16 +25,20 @@ export const NavItem = styled.li`
 export const NavLink = styled(Link)`
   display: flex;
   align-items: center;
+  margin-right: 10px;
 
   &:hover {
     color: #777;
   }
+
+  &:last-child {
+    margin-right: 0;
+  }
 `;
 
 export const Logo = styled.div`
-  color: official;
-  display: inline-block;
-  position: relative;
-  width: 80px;
+  display: flex;
+  align-items: center;
+  min-width: 120px;
   height: 80px;
 `;

@@ -41,3 +41,20 @@ export const Select = styled.select`
   margin-bottom: 10px;
   font-family: inherit;
 `;
+
+export const Close = styled.button`
+  background: none;
+  border: none;
+  color: #000;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s all;
+
+  &:hover {
+    color: red;
+    transform: scale(0.95);
+  }
+`;

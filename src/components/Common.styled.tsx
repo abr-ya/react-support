@@ -78,6 +78,11 @@ export const Btn = styled.button`
   & > svg {
     margin-right: 8px;
   }
+
+  &:disabled {
+    background: gray;
+    cursor: not-allowed;
+  }
 `;
 
 export const BtnBlock = styled(Btn)`

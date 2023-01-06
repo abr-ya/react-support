@@ -10,3 +10,10 @@ export const getNotesReq = async (ticketId, token) => {
 
   return response.data;
 };
+
+// Create ticket note
+export const createNoteReq = async (text, ticketId, token) => {
+  const response = await axios.post(`${TICKET_URL}${ticketId}/notes`, { text }, createConfig(token));
+
+  return response.data;
+};

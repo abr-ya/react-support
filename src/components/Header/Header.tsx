@@ -1,5 +1,4 @@
 import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { Logo, Nav, NavItem, NavLink, StyledHeader } from "./Header.styled";
 import { useAppDispatch, useAppSelector } from "features/typedRedux";
 import { Btn } from "components/Common.styled";
@@ -16,7 +15,8 @@ const Header = () => {
   return (
     <StyledHeader>
       <Logo>
-        <Link to="/">Home</Link>
+        <NavLink to="/">Home Page</NavLink>
+        <NavLink to="/">About Page</NavLink>
       </Logo>
       <Nav>
         {user ? (

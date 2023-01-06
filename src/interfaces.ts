@@ -43,3 +43,8 @@ export interface INote {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface INewNote {
+  ticketId: string;
+  text: string;
+}
